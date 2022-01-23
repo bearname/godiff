@@ -1,0 +1,34 @@
+	"net"
+	"net/http"
+	"os"
+	"photofinish/pkg/app/auth"
+	s32 "photofinish/pkg/app/aws/s3"
+	"photofinish/pkg/app/dropbox"
+	"photofinish/pkg/app/event"
+	"photofinish/pkg/app/picture"
+	"photofinish/pkg/common/infrarstructure/server"
+	"photofinish/pkg/domain"
+	"photofinish/pkg/infrastructure/postgres"
+	"photofinish/pkg/infrastructure/router"
+	"photofinish/pkg/infrastructure/transport"
+	"strconv"
+	"time"
+)
+var svc *rekognition.Rekognition
+//var bucket = flag.String("bucket", "img-rekongnition-test", "The name of the bucket")
+//var photo = flag.String("photo", "pexels-oleg-magni-1427741.jpg", "The path to the photo file (JPEG, JPG, PNG)")
+
+func main() {
+	//flag.Parse()
+	//runtime.GOMAXPROCS(4)
+	log.SetFormatter(&log.JSONFormatter{})
+	//file, err := os.OpenFile("short.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0666)
+	//if err == nil {
+	//	log.SetOutput(file)
+	//	defer func(file *os.File) {
+	//		err = file.Close()
+	//		if err != nil {
+	//			log.Error(err)
+	//		}
+	//	}(file)
+	//}
